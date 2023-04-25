@@ -9,7 +9,6 @@ import com.example.quiz_16_android_exam.data.model.network.repository.MovieData
 import com.example.quiz_16_android_exam.data.model.network.repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import java.lang.Exception
 import javax.inject.Inject
 
 @HiltViewModel
@@ -21,18 +20,21 @@ class FirstViewModel @Inject constructor(private val repository: Repository) : V
 
 //    val listMovie = mutableListOf<MovieData>()
 
-    fun getMovieList (page:Int) {
-        viewModelScope.launch{
+    fun getMovieList(page: Int) {
+        viewModelScope.launch {
             try {
 //                listMovie.addAll(listOf(repository.getPopularMovie(page)))
                 pages++
                 movieList.postValue(repository.getPopularMovie(page))
-            }catch (e:Exception){
+            } catch (e: Exception) {
                 Log.e(TAG, "getMovieList: ")
             }
         }
     }
 
+    fun nextPage() {
+        getMovieList(pages)
+    }
 
 
 }
