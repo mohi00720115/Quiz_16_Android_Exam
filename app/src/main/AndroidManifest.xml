@@ -11,6 +11,7 @@
         android:theme="@style/Theme.Quiz_16_Android_Exam">
         <activity
             android:name=".ui.MainActivity"
+            android:configChanges="orientation|screenSize|screenLayout"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
